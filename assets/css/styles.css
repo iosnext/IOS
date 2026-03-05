@@ -13,6 +13,14 @@
   box-sizing: border-box;
 }
 
+.short {
+  display: none;
+}
+
+.long {
+  display: inline;
+}
+
 body {
   margin: 0;
   min-height: 100vh;
@@ -99,6 +107,7 @@ body::before {
 }
 
 @keyframes blink {
+
   0%,
   100% {
     opacity: 1;
@@ -244,6 +253,69 @@ h1 {
   .get-button {
     align-self: center;
   }
+
+  .long {
+    display: none;
+  }
+
+  .short {
+    display: inline;
+  }
+
+  .card-guide {
+    margin-top: 12px;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    padding: 20px 16px;
+  }
+
+  .card-header {
+    margin-bottom: 18px;
+    justify-content: center;
+    position: relative;
+  }
+
+  .card-header h2 {
+    font-size: 17px;
+    letter-spacing: -0.3px;
+  }
+
+  .steps {
+    gap: 12px;
+  }
+
+  .step {
+    padding: 2px 0;
+    gap: 12px;
+  }
+
+  .step-num {
+    width: 20px;
+    height: 20px;
+    min-width: 20px;
+    font-size: 10px;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 122, 255, 0.15);
+  }
+
+  .step-text {
+    font-size: 13.5px;
+    color: var(--muted);
+  }
+
+  .divider {
+    margin: 14px 0;
+    opacity: 0.5;
+  }
+
+  .footnote {
+    font-size: 11px;
+    opacity: 0.8;
+  }
 }
 
 .card-guide {
@@ -309,4 +381,3 @@ h1 {
 .step-text strong {
   color: var(--text);
 }
-
