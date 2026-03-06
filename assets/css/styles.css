@@ -49,10 +49,117 @@ body::before {
   pointer-events: none;
 }
 
+/* Splash Screen & Animations */
+.splash-screen {
+  position: fixed;
+  inset: 0;
+  background: var(--bg-1);
+  display: grid;
+  place-items: center;
+  z-index: 10000;
+  transition: opacity 0.5s ease-out, visibility 0.5s;
+}
+
+.splash-screen.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.splash-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.splash-logo {
+  width: 100px;
+  height: 100px;
+  animation: logoPulse 1.8s ease-in-out infinite, logoEntry 1s cubic-bezier(0.16, 1, 0.3, 1);
+  filter: drop-shadow(0 0 30px rgba(0, 122, 255, 0.15));
+}
+
+.splash-loader {
+  width: 40px;
+  height: 4px;
+  background: rgba(0, 122, 255, 0.1);
+  border-radius: 99px;
+  position: relative;
+  overflow: hidden;
+}
+
+.splash-loader::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 50%;
+  background: var(--accent);
+  border-radius: 99px;
+  animation: loaderMove 1.5s infinite ease-in-out;
+}
+
+@keyframes logoPulse {
+
+  0%,
+  100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 30px rgba(0, 122, 255, 0.15));
+  }
+
+  50% {
+    transform: scale(1.08);
+    filter: drop-shadow(0 0 45px rgba(0, 122, 255, 0.3));
+  }
+}
+
+@keyframes logoEntry {
+  from {
+    opacity: 0;
+    transform: scale(0.6) translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes loaderMove {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  50% {
+    transform: translateX(100%);
+    width: 70%;
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
 .wrap {
   width: min(680px, 100%);
   display: grid;
   gap: 18px;
+  animation: wrapEntry 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: 1.2s;
+  /* Wait for splash to start fading */
+}
+
+@keyframes wrapEntry {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .topbar {
